@@ -1,0 +1,112 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Lista de contactos</h1>
+<table id="tabla">
+<thead>
+<tr>
+<th>nombre</th>
+<th>Apellido</th>
+<th>Número</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody id="cuerpo">
+
+</tbody>
+</table>
+<input type="text" id="nombre" placeholder="Nombre">
+<input type="text" id="apellido" placeholder="Apellido">
+<input type="text" id="numero" placeholder="Número">
+<button id="añadir">Añadir contacto</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+let Contacto = function(nombre,apellido,numero){
+this.nombre = nombre; 
+this.apellido = apellido;
+this.numero = numero;
+};
+
+let mostrarContacto = function(contacto){
+console.log ("nombre:"+contacto.nombre);
+console.log ("apellido:"+contacto.apellido);
+console.log("numero:"+contacto.numero);
+};
+let listaDeContactos = [];
+
+listaDeContactos.push (new Contacto("luis","moguea","3203972107"));
+listaDeContactos.push(new Contacto("nicole","moguea",3144821254));
+listaDeContactos.push(new Contacto("nicole","cobos","3057767102"));
+listaDeContactos.push(new Contacto("brenda","manrique","3029963660"))
+listaDeContactos.push(new Contacto("david","aguirre","3203692964"));
+
+let añadirContactos = function(nombre,apellido,numero){
+let nuevoContato = new Contacto(nombre,apellido,numero);
+listaDeContactos.push(nuevoContato);
+console.log ("se ha añadido el contacto: "+nombre+" "+apellido);
+}
+
+
+let borrarContacto= function (nombre,apellido){
+let indice = -1;
+for ( let i=0;i<listaDeContactos.length; i++){
+if(listaDeContactos[i].nombre===nombre && listaDeContactos[i].apellido===apellido){
+indice=i;
+break;
+}
+}
+
+if (indice !== -1){
+listaDeContactos.splice(indice,1);
+console.log("se ha borrado el contacto:"+nombre+" "+apellido);
+}else{
+console.log("no se encontro el contacto:"+nombre+" "+apellido);
+}
+};
+let imprimirListaDeContactos = function(){
+console.log ("la lista tiene"+listaDeContactos.length+" contactos:");
+for (let i=0;i<listaDeContactos.length;i++){
+mostrarContacto(listaDeContactos[i]);
+}
+};
+let mostrarListaEnTabla = function() {
+$("#cuerpo").empty();
+for (let i=0;i<listaDeContactos.length;i++){
+let contacto = listaDeContactos[i];
+let fila = $("<tr></tr>");
+fila.append($("<td></td>").text(contacto.nombre));
+fila.append($("<td></td>").text(contacto.apellido));
+fila.append($("<td></td>").text(contacto.numero));
+let boton = $("<button>Borrar</button>");
+boton.click(function() {
+borrarContacto(contacto.nombre, contacto.apellido);
+mostrarListaEnTabla();
+});
+fila.append($("<td></td>").append(boton));
+$("#cuerpo").append(fila);
+}
+};
+mostrarListaEnTabla();
+$("#añadir").click(function() {
+let nombre = $("#nombre").val();
+let apellido = $("#apellido").val();
+let numero = $("#numero").val();
+
+if (nombre && apellido && numero) {
+añadirContactos(nombre, apellido, numero);
+mostrarListaEnTabla();
+$("#nombre").val("");
+$("#apellido").val("");
+$("#numero").val("");
+} else {
+alert("Por favor ingresa todos los datos");
+}
+});
+
+
+</script>
+</body>
+</html>

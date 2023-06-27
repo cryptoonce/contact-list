@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lista de Contactos</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+    }
+    
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #87ceeb;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+    
+    h1 {
+        text-align: center;
+        font-weight: bold;
+        color: #000080;
+    }
+    
+    .contact-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .contact-list-item {
+        margin-bottom: 10px;
+        border: 1px solid #87ceeb;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #f0f8ff;
+    }
+    
+    .contact-list-item h3 {
+        margin: 0;
+        color: #000080;
+    }
+    
+    .contact-list-item p {
+    margin: 0;
+    color: #000;
+    
+    .edit-btn,
+    .delete-btn {
+        background-color: #000080;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: 5px;
+    
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Contactos 2</h1>
+    <ul class="contact-list" id="contactList">
+        <li class="contact-list-item">
+        <h3>Luis Moguea</h3>
+        <p>Número de celular: 3203972107</p>
+        <p>Ubicación: Ciudad Bogotá</p>
+    </li>
+    <li class="contact-list-item">
+        <h3>Brenda Manrique</h3>
+        <p>Número de celular: 3209963660</p>
+        <p>Ubicación: Ciudad Bogotá</p>
+    </li>
+    <li class="contact-list-item">
+        <h3>Nicol Daniela</h3>
+        <p>Número de celular: 3238078443</p>
+        <p>Ubicación: Ciudad Bogotá</p>
+    </li>
+    </ul>
+    <form id="contactForm">
+        <h2>Agregar Nuevo Contacto</h2>
+        <input type="text" id="nameInput" placeholder="Nombre" required>
+        <input type="text" id="phoneInput" placeholder="Número de celular" required>
+        <input type="text" id="locationInput" placeholder="Ubicación" required>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
